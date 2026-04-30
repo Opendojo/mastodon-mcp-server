@@ -1,0 +1,3 @@
+#!/bin/sh
+set -e
+mastodon-mcp --version | grep -qE "mastodon-mcp [0-9]+\.[0-9]+\.[0-9]+"
