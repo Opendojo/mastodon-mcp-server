@@ -10,6 +10,7 @@ Author: Vítězslav Dvořák
 License: MIT
 """
 
+import argparse
 import os
 import json
 import logging
@@ -1126,6 +1127,39 @@ def directory(
 # ─── MAIN ────────────────────────────────────────────────────────────────────
 
 def main():
+    from importlib.metadata import version, PackageNotFoundError
+    try:
+        pkg_version = version("mastodon-mcp-server")
+    except PackageNotFoundError:
+        pkg_version = "unknown"
+
+    parser = argparse.ArgumentParser(
+        prog="mastodon-mcp",
+        description="Model Context Protocol server for Mastodon integration.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Environment variables:
+  MASTODON_INSTANCE          Mastodon instance URL (required)
+  MASTODON_ACCESS_TOKEN      OAuth access token (required)
+  MASTODON_MCP_TRANSPORT     Transport mode: stdio (default) or streamable-http
+  MASTODON_MCP_HOST          HTTP bind address (default: 127.0.0.1)
+  MASTODON_MCP_PORT          HTTP port (default: 8000)
+  MASTODON_MCP_STATELESS_HTTP  Disable HTTP session state (default: false)
+  READ_ONLY                  Restrict to read-only operations (default: false)
+  DEBUG                      Enable verbose logging (default: false)
+
+Examples:
+  # Run as stdio MCP server (for use with AI clients):
+  MASTODON_INSTANCE=https://mastodon.social MASTODON_ACCESS_TOKEN=<token> mastodon-mcp
+
+  # Run as HTTP MCP server:
+  MASTODON_MCP_TRANSPORT=streamable-http MASTODON_MCP_PORT=8080 \\
+    MASTODON_INSTANCE=https://mastodon.social MASTODON_ACCESS_TOKEN=<token> mastodon-mcp
+""",
+    )
+    parser.add_argument("--version", action="version", version=f"%(prog)s {pkg_version}")
+    parser.parse_args()
+
     transport = os.getenv("MASTODON_MCP_TRANSPORT", "stdio").lower()
 
     if transport == "streamable-http":

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="mastodon-mcp.svg" alt="mastodon-mcp-server" width="128">
+</p>
+
 # mastodon-mcp-server
 
 A comprehensive MCP (Model Context Protocol) server for Mastodon integration. Enables AI assistants and other MCP clients to interact with Mastodon instances.

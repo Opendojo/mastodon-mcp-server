@@ -8,6 +8,7 @@ Build-Depends:
  pybuild-plugin-pyproject,
  python3-all,
  python3-setuptools,
+ appstream,
 Standards-Version: 4.7.0
 Homepage: https://github.com/VitexSoftware/mastodon-mcp-server
 Rules-Requires-Root: no
