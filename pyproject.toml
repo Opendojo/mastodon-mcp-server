@@ -1,0 +1,54 @@
+[project]
+name = "mastodon-mcp-server"
+version = "1.0.0"
+description = "A comprehensive MCP server for Mastodon integration"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Vítězslav Dvořák", email = "info@vitexsoftware.cz"}
+]
+keywords = ["mastodon", "fediverse", "activitypub", "mcp", "api", "server", "social"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet",
+    "Topic :: Communications",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+dependencies = [
+    "fastmcp>=2.14.4",
+    "Mastodon.py>=2.0.1",
+    "python-dotenv>=1.0.1",
+]
+requires-python = ">=3.10"
+
+[project.urls]
+Homepage = "https://github.com/VitexSoftware/mastodon-mcp-server"
+Repository = "https://github.com/VitexSoftware/mastodon-mcp-server"
+Issues = "https://github.com/VitexSoftware/mastodon-mcp-server/issues"
+Documentation = "https://github.com/VitexSoftware/mastodon-mcp-server#readme"
+
+[project.scripts]
+mastodon-mcp = "mastodon_mcp_server.server:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mastodon_mcp_server"]
+
+[tool.setuptools.package-data]
+mastodon_mcp_server = ["*.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["scripts"]
+filterwarnings = [
+    "ignore::pytest.PytestReturnNotNoneWarning",
+]

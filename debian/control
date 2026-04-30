@@ -1,0 +1,41 @@
+Source: mastodon-mcp-server
+Section: python
+Priority: optional
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-setuptools,
+Standards-Version: 4.7.0
+Homepage: https://github.com/VitexSoftware/mastodon-mcp-server
+Rules-Requires-Root: no
+Vcs-Git: https://github.com/VitexSoftware/mastodon-mcp-server.git
+Vcs-Browser: https://github.com/VitexSoftware/mastodon-mcp-server
+
+Package: mastodon-mcp-server
+Architecture: all
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ python3-fastmcp (>= 2.14.4),
+ python3-mastodon (>= 2.0.1),
+ python3-dotenv (>= 1.0.1),
+Description: Model Context Protocol server for Mastodon integration
+ A comprehensive MCP server providing access to Mastodon social network
+ functionality through the Model Context Protocol, enabling AI assistants
+ and other tools to interact with Mastodon instances.
+ .
+ Features include:
+  * Timeline reading (home, local, public, hashtag)
+  * Status posting, deleting, favouriting, and reblogging
+  * Account management and social graph operations (follow, block, mute)
+  * Notifications management
+  * Full-text search for accounts, statuses, and hashtags
+  * Trending tags, statuses, and links
+  * List management
+  * Media upload
+  * Poll voting
+  * Read-only mode for safe browsing
+  * Support for both STDIO and HTTP transports
