@@ -14,7 +14,7 @@ import os
 import json
 import logging
 from typing import Any, Dict, List, Optional
-from fastmcp import FastMCP
+from mastodon_mcp_server._mcp import FastMCP
 from mastodon import Mastodon, MastodonError
 from dotenv import load_dotenv
 

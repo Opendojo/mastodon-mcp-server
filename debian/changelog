@@ -1,3 +1,11 @@
+mastodon-mcp-server (1.0.1-1) unstable; urgency=medium
+
+  * Replace fastmcp dependency with bundled stdlib-only MCP implementation
+    to resolve unmet dependency chain (python3-mcp, python3-opentelemetry-api,
+    python3-py-key-value-aio not packaged for Debian Trixie)
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 30 Apr 2026 10:00:00 +0200
+
 mastodon-mcp-server (1.0.0-1) unstable; urgency=medium
 
   * Initial Debian package release
