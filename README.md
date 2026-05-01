@@ -142,7 +142,7 @@ MASTODON_MCP_TRANSPORT=streamable-http mastodon-mcp
 
 ## Usage
 
-```
+```text
 usage: mastodon-mcp [-h] [--version]
 
 Model Context Protocol server for Mastodon integration.
