@@ -201,12 +201,15 @@ try:
         [sys.executable, "-m", "mastodon_mcp_server.server", "--version"],
         capture_output=True, text=True, cwd=PROJECT_ROOT
     )
-    cli_version = (result.stdout + result.stderr).strip().split()[-1]
-    ok(f"CLI --version: {cli_version}")
-    if pyproject_version and cli_version != pyproject_version:
-        fail(f"Version mismatch: pyproject={pyproject_version} cli={cli_version}")
-    elif pyproject_version:
-        ok("Versions match")
+    if result.returncode != 0:
+        fail(f"CLI --version failed: {(result.stderr or result.stdout).strip()}")
+    else:
+        cli_version = result.stdout.strip().split()[-1]
+        ok(f"CLI --version: {cli_version}")
+        if pyproject_version and cli_version != pyproject_version:
+            fail(f"Version mismatch: pyproject={pyproject_version} cli={cli_version}")
+        elif pyproject_version:
+            ok("Versions match")
 except Exception as e:
     skip(f"CLI version check skipped: {e}")
 
