@@ -145,16 +145,22 @@ except Exception as e:
 
 # is_read_only
 old_val = os.environ.get("READ_ONLY")
-os.environ["READ_ONLY"] = "true"
-assert is_read_only() is True, "READ_ONLY=true should return True"
-os.environ["READ_ONLY"] = "false"
-assert is_read_only() is False, "READ_ONLY=false should return False"
-os.environ["READ_ONLY"] = "1"
-assert is_read_only() is True, "READ_ONLY=1 should return True"
-if old_val is None:
-    del os.environ["READ_ONLY"]
-else:
-    os.environ["READ_ONLY"] = old_val
+try:
+    os.environ["READ_ONLY"] = "true"
+    if is_read_only() is not True:
+        fail("READ_ONLY=true should return True")
+    os.environ["READ_ONLY"] = "false"
+    if is_read_only() is not False:
+        fail("READ_ONLY=false should return False")
+    os.environ["READ_ONLY"] = "1"
+    if is_read_only() is not True:
+        fail("READ_ONLY=1 should return True")
+finally:
+    if old_val is None:
+        if "READ_ONLY" in os.environ:
+            del os.environ["READ_ONLY"]
+    else:
+        os.environ["READ_ONLY"] = old_val
 ok("is_read_only() handles true/false/1")
 
 # validate_write blocks in read-only mode
