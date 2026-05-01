@@ -1,0 +1,84 @@
+.TH MASTODON\-MCP 1 "2026-04-30" "mastodon-mcp-server 1.0.1" "User Commands"
+.SH NAME
+mastodon\-mcp \- Model Context Protocol server for Mastodon integration
+.SH SYNOPSIS
+.B mastodon\-mcp
+[\fB\-\-version\fR]
+[\fB\-\-help\fR]
+.SH DESCRIPTION
+.B mastodon\-mcp
+is a Model Context Protocol (MCP) server that provides AI assistants and
+other MCP-compatible clients with access to Mastodon social network
+functionality via the Mastodon.py library.
+.PP
+The server communicates over standard input/output (stdio) by default, or
+optionally over HTTP using the streamable-HTTP transport.  It is configured
+entirely through environment variables; no configuration files are required.
+.SH OPTIONS
+.TP
+.B \-\-version
+Print the version number and exit.
+.TP
+.B \-\-help
+Print a usage summary and exit.
+.SH ENVIRONMENT
+.TP
+.B MASTODON_INSTANCE
+URL of the Mastodon instance to connect to (required).
+Example: \fIhttps://mastodon.social\fR
+.TP
+.B MASTODON_ACCESS_TOKEN
+OAuth 2.0 access token for authentication (required).
+.TP
+.B MASTODON_MCP_TRANSPORT
+Transport mode.  Accepted values: \fBstdio\fR (default) or
+\fBstreamable\-http\fR.
+.TP
+.B MASTODON_MCP_HOST
+Bind address for the HTTP transport (default: \fI127.0.0.1\fR).
+.TP
+.B MASTODON_MCP_PORT
+TCP port for the HTTP transport (default: \fI8000\fR).
+.TP
+.B MASTODON_MCP_STATELESS_HTTP
+Set to \fBtrue\fR, \fB1\fR, or \fByes\fR to disable HTTP session state
+(default: \fIfalse\fR).
+.TP
+.B READ_ONLY
+Set to \fBtrue\fR, \fB1\fR, or \fByes\fR to restrict the server to
+read-only Mastodon operations (default: \fIfalse\fR).
+.TP
+.B DEBUG
+Set to any non-empty value to enable verbose logging (default: disabled).
+.SH EXAMPLES
+Run as a stdio MCP server (typical usage with an AI client):
+.PP
+.RS
+.nf
+MASTODON_INSTANCE=https://mastodon.social \\
+MASTODON_ACCESS_TOKEN=<token> \\
+mastodon\-mcp
+.fi
+.RE
+.PP
+Run as an HTTP MCP server on port 8080:
+.PP
+.RS
+.nf
+MASTODON_MCP_TRANSPORT=streamable\-http \\
+MASTODON_MCP_PORT=8080 \\
+MASTODON_INSTANCE=https://mastodon.social \\
+MASTODON_ACCESS_TOKEN=<token> \\
+mastodon\-mcp
+.fi
+.RE
+.SH FILES
+.TP
+.I /etc/mastodon\-mcp\-server/.env
+Optional dotenv file loaded at startup (not installed by default).
+.SH SEE ALSO
+.UR https://github.com/VitexSoftware/mastodon-mcp-server
+Project homepage
+.UE
+.SH AUTHOR
+Vítězslav Dvořák <info@vitexsoftware.cz>
