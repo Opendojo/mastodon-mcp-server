@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="console-application">
   <id>cz.vitexsoftware.mastodon-mcp-server</id>
+  <icon type="stock">mastodon-mcp-server</icon>
   <metadata_license>FSFAP</metadata_license>
   <project_license>MIT</project_license>
   <name>Mastodon MCP Server</name>
