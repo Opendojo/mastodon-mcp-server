@@ -9,7 +9,7 @@ A comprehensive MCP (Model Context Protocol) server for Mastodon integration. En
 ## Features
 
 - **Timelines**: home, local, public, hashtag
-- **Statuses**: post, delete, favourite, reblog, bookmark
+- **Statuses**: post, edit, delete, favourite, reblog, bookmark, pin, mute
 - **Accounts**: follow, unfollow, block, mute, relationships, profile update
 - **Notifications**: read, dismiss individual or all
 - **Search**: accounts, statuses, hashtags
@@ -225,6 +225,7 @@ Environment variables:
 | Tool                                      | Description                                 |
 | ----------------------------------------- | ------------------------------------------- |
 | `account_verify`                          | Own profile                                 |
+| `account_lookup`                          | Account by handle (e.g. @user@instance)      |
 | `account_get`                             | Account by numeric ID                       |
 | `account_search`                          | Search accounts by username or display name |
 | `account_statuses`                        | Posts by an account                         |
@@ -251,11 +252,17 @@ Environment variables:
 | `status_get`                                   | Single status by ID                                       |
 | `status_context`                               | Thread ancestors and descendants                          |
 | `status_post`                                  | Post a new status (supports CW, visibility, media, polls) |
+| `status_update`                                | Edit an existing status                                   |
+| `status_history`                               | Get edit history of a status                               |
+| `status_source`                                | Plain-text source for editing                              |
+| `status_translate`                             | Translate a status to another language                      |
 | `status_delete`                                | Delete own status                                         |
 | `status_favourite` / `status_unfavourite`      | Favourite management                                      |
 | `status_reblog` / `status_unreblog`            | Boost management                                          |
 | `status_bookmark` / `status_unbookmark`        | Bookmark management                                       |
 | `status_favourited_by` / `status_reblogged_by` | Who engaged with a status                                 |
+| `status_pin` / `status_unpin`                  | Pin status to profile                                      |
+| `status_mute` / `status_unmute`                | Mute specific statuses                                    |
 
 ### Notifications
 
@@ -266,6 +273,7 @@ Environment variables:
 | `notifications_clear`  | Clear all notifications                 |
 
 ### Search & Discovery
+- **Tagging**: follow, unfollow hashtags
 
 | Tool                | Description                             |
 | ------------------- | --------------------------------------- |
@@ -274,6 +282,8 @@ Environment variables:
 | `trending_statuses` | Trending statuses                       |
 | `trending_links`    | Trending links/articles                 |
 | `directory`         | Browse the instance profile directory   |
+| `tag_follow`        | Follow a hashtag                         |
+| `tag_unfollow`      | Unfollow a hashtag                       |
 
 ### Collections
 
@@ -312,21 +322,7 @@ Environment variables:
 | ------------ | ----------------------------------- |
 | `media_post` | Upload image/video/audio attachment |
 
-## Future Tools (Mastodon.py ≥ 2.x / Mastodon server ≥ 3.5)
-
-The following tools are implemented but commented out in `server.py`. Uncomment them when your distribution ships `python3-mastodon >= 2.0.1` (already available on Debian 13/trixie):
-
-| Tool                         | Requirement                      |
-| ---------------------------- | -------------------------------- |
-| `status_update`              | Edit a status (server 3.5+)      |
-| `status_history`             | Edit history (server 3.5+)       |
-| `status_source`              | Plain-text source for editing    |
-| `status_translate`           | Translate a status (server 4.0+) |
-| `conversations`              | Direct-message conversations     |
-| `scheduled_statuses`         | List scheduled posts             |
-| `scheduled_status_update`    | Reschedule a post                |
-| `scheduled_status_delete`    | Cancel a scheduled post          |
-| `notifications_unread_count` | Unread notification count        |
+(removed)
 
 ## Testing
 
