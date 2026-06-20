@@ -134,6 +134,27 @@ claude mcp add --scope user mastodon /usr/bin/mastodon-mcp \
 }
 ```
 
+### Hermes (CLI)
+
+```bash
+hermes mcp add mastodon --command /usr/bin/mastodon-mcp --args []
+```
+
+### Hermes Desktop
+
+Add the following to your configuration YAML:
+
+```yaml
+mcp_servers:
+  mastodon:
+    command: /usr/bin/mastodon-mcp
+    args: []
+    env:
+      MASTODON_INSTANCE: "https://mastodon.social"
+      MASTODON_ACCESS_TOKEN: "your-token-here"
+    enabled: true
+```
+
 ### HTTP transport (any MCP client)
 
 ```bash
@@ -297,3 +318,6 @@ The server uses a bundled stdlib-only MCP implementation (`mastodon_mcp_server/_
 ## License
 
 MIT — Vítězslav Dvořák <info@vitexsoftware.cz>
+
+---
+For AI agents contributing to this project, please refer to [AGENTS.md](AGENTS.md) for coding standards and development workflow.
