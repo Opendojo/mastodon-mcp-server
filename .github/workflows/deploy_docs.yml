@@ -27,7 +27,7 @@ jobs:
 
       - name: Generate documentation
         run: |
-          pdoc --html mastodon_mcp_server --output-dir docs
+          pdoc --html mastodon_mcp_server --output-dir docs --force
 
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
