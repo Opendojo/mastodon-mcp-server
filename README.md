@@ -33,13 +33,26 @@ apt install mastodon-mcp-server
 ```bash
 pip install mastodon-mcp-server
 ```
+### uv
+
+```bash
+uv tool install mastodon-mcp-server
+```
 
 ### From source
+
+#### pip
 
 ```bash
 git clone https://github.com/VitexSoftware/mastodon-mcp-server.git
 cd mastodon-mcp-server
 pip install -e .
+```
+
+#### uv
+
+```bash
+uv tool install .
 ```
 
 ## Configuration
