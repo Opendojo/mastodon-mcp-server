@@ -136,13 +136,23 @@ claude mcp add --scope user mastodon /usr/bin/mastodon-mcp \
 
 ### Hermes (CLI)
 
+If installed as a binary package
+
 ```bash
-hermes mcp add mastodon --command /usr/bin/mastodon-mcp --args []
+hermes mcp add mastodon --command /usr/bin/mastodon-mcp \
+  --env MASTODON_INSTANCE=mastodon.social \
+  --env MASTODON_ACCESS_TOKEN=your-token-here
 ```
 
-### Hermes Desktop
+If installed from source and for development purpose
 
-Add the following to your configuration YAML:
+```bash
+hermes mcp add mastodon --command /fullpath/mastodon_mcp_server/.venv/bin/mastodon-mcp \
+  --env MASTODON_INSTANCE=mastodon.social \
+  --env MASTODON_ACCESS_TOKEN=your-token-here
+```
+
+or directly edit ~/.hermes/config.yaml and add the following to your configuration YAML in the section mcp_servers
 
 ```yaml
 mcp_servers:
@@ -153,6 +163,25 @@ mcp_servers:
       MASTODON_INSTANCE: "https://mastodon.social"
       MASTODON_ACCESS_TOKEN: "your-token-here"
     enabled: true
+```
+
+### Hermes Desktop
+
+Add in the Settings > MCP a New server
+
+* **Name**: mastodon-mcp
+
+* **Server JSON**:
+```json
+{
+  "command": "/usr/bin/mastodon-mcp",
+  "args": [],
+  "env": {
+    "MASTODON_INSTANCE": "https://mastodon.social",
+    "MASTODON_ACCESS_TOKEN": "your-token-here"
+  },
+  "disabled": false
+}
 ```
 
 ### HTTP transport (any MCP client)
