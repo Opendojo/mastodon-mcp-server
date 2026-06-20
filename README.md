@@ -164,6 +164,7 @@ hermes mcp add mastodon --command /fullpath/mastodon_mcp_server/.venv/bin/mastod
   --env MASTODON_INSTANCE=mastodon.social \
   --env MASTODON_ACCESS_TOKEN=your-token-here
 ```
+
 or directly edit ~/.hermes/config.yaml and add the following to your configuration YAML in the section mcp_servers
 
 ```yaml
