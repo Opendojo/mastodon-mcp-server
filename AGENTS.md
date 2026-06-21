@@ -2,19 +2,13 @@
 
 This document provides guidelines and best practices for AI agents (such as Hermes, Cline, and others) contributing to the mastodon-mcp-server project.
 
-## Current Tasks
-
-* [x] upgrade to mastodon.py 2.2.1 (https://github.com/halcy/Mastodon.py) to ensure full compatibility with the newer mastodon server version, this will need to implement a bunch of new mcp.tools() functions and also refactor most of them
-* [x] ensure scripts/test_server.py is still working
-* [x] update the documentation: README.md if needed
-* [x] update the requirements.txt if needed
-
 ## Core Principles
 
 1. **Dependency Minimization**: The server uses a custom, stdlib-only MCP implementation in `mastodon_mcp_server/_mcp.py`. Avoid adding external dependencies unless absolutely necessary for core functionality.
 2. **Professional Documentation**: All documentation, including commit messages and README updates, must be professional and free of emojis.
 3. **Transparency**: All changes made by AI agents should be clearly documented, and credits must be maintained for both human developers and the AI tools used.
 4. **Test-Driven Maintenance**: Every tool addition or modification must be reflected in the test suite to ensure regression safety.
+5. **Exactitude**: Ensure .yml, .yaml, .py files are correctly indented everytime you edit them
 
 ## Development Workflow for Agents
 
