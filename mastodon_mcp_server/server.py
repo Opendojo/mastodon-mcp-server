@@ -640,7 +640,6 @@ def notifications_clear() -> str:
 def search(
     query: str,
     resolve: bool = False,
-    limit: int = 20,
     search_type: Optional[str] = None,
 ) -> str:
     """Search Mastodon for accounts, statuses, and hashtags.
@@ -648,15 +647,14 @@ def search(
     Args:
         query: Search string.
         resolve: Resolve non-local accounts/statuses (default False).
-        limit: Maximum results per category (default 20).
         search_type: Restrict to 'accounts', 'statuses', or 'hashtags'.
-                     None returns all types.
+                      None returns all types.
 
     Returns:
         str: JSON with 'accounts', 'statuses', and 'hashtags' lists.
     """
     client = get_client()
-    kwargs: Dict[str, Any] = {"q": query, "resolve": resolve, "limit": limit}
+    kwargs: Dict[str, Any] = {"q": query, "resolve": resolve}
     if search_type:
         kwargs["result_type"] = search_type
     return fmt(client.search(**kwargs))
