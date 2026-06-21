@@ -178,6 +178,26 @@ mcp_servers:
     enabled: true
 ```
 
+### Hermes Skill Installation
+
+This server includes a specialized skill for content creation that ensures stylistic consistency with your existing blog posts. You can install it using the Hermes CLI:
+
+```bash
+hermes skills install https://github.com/Opendojo/mastodon-mcp-server/-/raw/main/skills/SKILL.md --category writing
+```
+
+
+```yaml
+mcp_servers:
+  mastodon:
+    command: /usr/bin/mastodon-mcp
+    args: []
+    env:
+      MASTODON_INSTANCE: "https://mastodon.social"
+      MASTODON_ACCESS_TOKEN: "your-token-here"
+    enabled: true
+```
+
 ### Hermes Desktop
 
 Add in the Settings > MCP a New server

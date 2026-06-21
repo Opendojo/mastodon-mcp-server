@@ -1,11 +1,12 @@
 [project]
 name = "mastodon-mcp-server"
-version = "1.0.1"
+version = "1.1.0"
 description = "A comprehensive MCP server for Mastodon integration"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Vítězslav Dvořák", email = "info@vitexsoftware.cz"}
+    {name = "Vítězslav Dvořák", email = "info@vitexsoftware.cz"},
+    {name = "Sébastien Barbieri", email = "sebastien.barbieri@sbw.be"}
 ]
 keywords = ["mastodon", "fediverse", "activitypub", "mcp", "api", "server", "social"]
 classifiers = [
@@ -22,8 +23,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "Mastodon.py>=2.0.1",
+    "Mastodon.py>=2.2.1",
     "python-dotenv>=1.0.1",
+    "pdoc3>=0.11.6",
 ]
 requires-python = ">=3.10"
 
