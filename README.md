@@ -337,6 +337,18 @@ Environment variables:
 
 (removed)
 
+## Documentation
+
+This project uses `pdoc3` to generate self-hosted API documentation from the source code.
+
+The documentation is automatically deployed to [GitHub Pages](https://Opendojo.github.io/mastodon-mcp-server/).
+
+To regenerate the documentation locally:
+```bash
+./scripts/generate_docs.sh
+```
+The generated HTML files are maintained in the `docs/` directory.
+
 ## Testing
 
 ```bash
