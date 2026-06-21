@@ -183,7 +183,7 @@ mcp_servers:
 This server includes a specialized skill for content creation that ensures stylistic consistency with your existing blog posts. You can install it using the Hermes CLI:
 
 ```bash
-hermes skills install https://github.com/Opendojo/mastodon-mcp-server/-/raw/main/skills/SKILL.md --category writing
+hermes skills install https://raw.githubusercontent.com/Opendojo/mastodon-mcp-server/refs/heads/main/skills/SKILL.md --category writing
 ```
 
 
