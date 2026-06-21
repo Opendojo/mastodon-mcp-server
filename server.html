@@ -1575,7 +1575,7 @@ def scheduled_statuses(limit: int = 20) -&gt; str:
 </dl></div>
 </dd>
 <dt id="mastodon_mcp_server.server.search"><code class="name flex">
-<span>def <span class="ident">search</span></span>(<span>query: str,<br>resolve: bool = False,<br>limit: int = 20,<br>search_type: str | None = None) ‑> str</span>
+<span>def <span class="ident">search</span></span>(<span>query: str, resolve: bool = False, search_type: str | None = None) ‑> str</span>
 </code></dt>
 <dd>
 <details class="source">
@@ -1586,7 +1586,6 @@ def scheduled_statuses(limit: int = 20) -&gt; str:
 def search(
     query: str,
     resolve: bool = False,
-    limit: int = 20,
     search_type: Optional[str] = None,
 ) -&gt; str:
     &#34;&#34;&#34;Search Mastodon for accounts, statuses, and hashtags.
@@ -1594,15 +1593,14 @@ def search(
     Args:
         query: Search string.
         resolve: Resolve non-local accounts/statuses (default False).
-        limit: Maximum results per category (default 20).
         search_type: Restrict to &#39;accounts&#39;, &#39;statuses&#39;, or &#39;hashtags&#39;.
-                     None returns all types.
+                      None returns all types.
 
     Returns:
         str: JSON with &#39;accounts&#39;, &#39;statuses&#39;, and &#39;hashtags&#39; lists.
     &#34;&#34;&#34;
     client = get_client()
-    kwargs: Dict[str, Any] = {&#34;q&#34;: query, &#34;resolve&#34;: resolve, &#34;limit&#34;: limit}
+    kwargs: Dict[str, Any] = {&#34;q&#34;: query, &#34;resolve&#34;: resolve}
     if search_type:
         kwargs[&#34;result_type&#34;] = search_type
     return fmt(client.search(**kwargs))</code></pre>
@@ -1614,8 +1612,6 @@ def search(
 <dd>Search string.</dd>
 <dt><strong><code>resolve</code></strong></dt>
 <dd>Resolve non-local accounts/statuses (default False).</dd>
-<dt><strong><code>limit</code></strong></dt>
-<dd>Maximum results per category (default 20).</dd>
 <dt><strong><code>search_type</code></strong></dt>
 <dd>Restrict to 'accounts', 'statuses', or 'hashtags'.
 None returns all types.</dd>
